@@ -1,6 +1,7 @@
 // add elements to a list
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
+const search = document.querySelector('.search input'); 
 
 const generateTemplate = todo => {
 
@@ -28,4 +29,23 @@ addForm.addEventListener('submit', e => {
         addForm.reset();
     }
 
-})
+}); 
+
+// Delete todos
+list.addEventListener('click', e => {
+
+    if(e.target.classList.contains('delete')){
+        e.target.parentElement.remove(); 
+    }
+
+});
+
+const filterTdos = (term) => {
+    console.log(term); 
+};
+// keyup event 
+search.addEventListener('keyup', () => {
+
+    const term = search.value.trim(); 
+
+});
