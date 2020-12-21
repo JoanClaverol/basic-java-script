@@ -1,34 +1,49 @@
 const answers = ['B', 'A', 'B'];
 
 // moving inside the quizz exercise
-const results = document.getElementsByName('q1');
 
-const results2 = document.getElementsByName('q2');
-results.forEach(result => {
-    if (result.checked) {
-        console.log('Option selected is', result.value);
-    }
-});
+let percCorrect = null;
 
-function myFunction() {
-    document.getElementById("ninjaForm").submit();
-    //console.log(results2);
-}
+function checkResults() {
 
-// up a level
-// const questions = document.getElementsByClassName('my-5');
-const questions = document.getElementsByClassName('my-5');
+    let results = [];
+    let index = 0;
+    let correct = 0;
+    const options = document.querySelectorAll('.my-5');
 
-questions.forEach(question => {
-    const options = question.querySelectorAll('div > input');
     options.forEach(option => {
-        if (option.checked) {
-            console.log('Option selected is', option.value)
-        }
-    })
-})
 
-console.log(questions);
-// questions.forEach(question => {
-//     console.log(question);
-// });
+        if (option.querySelector('.lead')) {
+            console.log('Questions: ', option.querySelector('.lead').innerText);
+            const inputs = option.querySelectorAll('div > input');
+            inputs.forEach(input => {
+                if (input.checked) {
+                    console.log('Input selected is', input.value);
+                    results.push(input.value);
+                }
+            })
+
+            if (results[index] === answers[index]) {
+                console.log('Correct answer!');
+                correct++;
+            } else {
+                console.log('Wrong answer!');
+            }
+            index++;
+        }
+
+    })
+    percCorrect = Math.round((correct / answers.length) * 1000) / 10;
+    console.log('Results: ', results);
+    console.log('Correct %:', percCorrect, '%')
+
+    if (percCorrect) {
+        const resultDiv = document.querySelector('.result');
+        resultDiv.setAttribute('class', 'result text-center');
+        console.log(resultDiv.querySelector('.container').innerHTML = `
+        <h2 class="score">Your score is <span class="text-primary">${percCorrect}%</span></h2>
+        `);
+    }
+    return percCorrect;
+
+}
