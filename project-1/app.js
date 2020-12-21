@@ -9,6 +9,7 @@ function checkResults() {
     let results = [];
     let index = 0;
     let correct = 0;
+    percCorrect = 0;
     const options = document.querySelectorAll('.my-5');
 
     options.forEach(option => {
@@ -37,13 +38,15 @@ function checkResults() {
     console.log('Results: ', results);
     console.log('Correct %:', percCorrect, '%')
 
+    // go to the top of the window
+    window.scrollTo(0, 0);
+
     if (percCorrect) {
         const resultDiv = document.querySelector('.result');
-        resultDiv.setAttribute('class', 'result text-center');
-        console.log(resultDiv.querySelector('.container').innerHTML = `
-        <h2 class="score">Your score is <span class="text-primary">${percCorrect}%</span></h2>
-        `);
+        // resultDiv.setAttribute('class', 'result text-center');
+        resultDiv.classList.remove('d-none');
+        resultDiv.querySelector('.text-primary').textContent = `${percCorrect}%`;
     }
-    return percCorrect;
+
 
 }
