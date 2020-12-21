@@ -16,8 +16,19 @@ function myFunction() {
 }
 
 // up a level
-// const questions = document.getElementsByClassName('.my-5');
+// const questions = document.getElementsByClassName('my-5');
+const questions = document.getElementsByClassName('my-5');
 
+questions.forEach(question => {
+    const options = question.querySelectorAll('div > input');
+    options.forEach(option => {
+        if (option.checked) {
+            console.log('Option selected is', option.value)
+        }
+    })
+})
+
+console.log(questions);
 // questions.forEach(question => {
 //     console.log(question);
 // });
