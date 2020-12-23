@@ -1,51 +1,35 @@
-// add elements to a list
-const addForm = document.querySelector('.add');
-const list = document.querySelector('.todos');
-const search = document.querySelector('.search input'); 
+// 1. Add new values on a list
+const input = document.querySelector('.add'); 
+const toDos = document.querySelector('.todos');
+const trashIcons = document.querySelectorAll('.far'); 
 
-const generateTemplate = todo => {
-
-    const html = `
+// b. How to insert html on a list?
+function addToDo(toDo){
+    toDos.innerHTML += `
     <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span>${todo}</span>
+        <span>${toDo}</span>
         <i class="far fa-trash-alt delete"></i>
     </li>
-    `;
-
-    list.innerHTML += html;
-
-}
-
-// attach an event listener
-addForm.addEventListener('submit', e => {
-
-    e.preventDefault();
-
-    const todo = addForm.add.value.trim();
-    console.log(todo);
-
-    if (todo.length) {
-        generateTemplate(todo);
-        addForm.reset();
-    }
-
-}); 
-
-// Delete todos
-list.addEventListener('click', e => {
-
-    if(e.target.classList.contains('delete')){
-        e.target.parentElement.remove(); 
-    }
-
-});
-
-const filterTdos = (term) => {
-    console.log(term); 
+    `;  
 };
-// keyup event 
-search.addEventListener('keyup', () => {
+// a. get the value inside the input form
+input.addEventListener('keydown', e => {
+    if(e.key == 'Enter'){
+        e.preventDefault(); 
 
-    const term = search.value.trim(); 
+        toDo = input.add.value;  
+        input.add.value = ''; 
+        
+        addToDo(toDo);  
+    }
+}); 
+// extra things. Be sure it is unique value, doesn't exist on the list already
+// clean the spaces
 
-});
+function removeToDo() {
+
+}; 
+
+
+// 2. Remove values in the list
+// 3. Search for values in the list
