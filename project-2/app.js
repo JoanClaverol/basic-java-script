@@ -34,3 +34,29 @@ ul.addEventListener('click', e => {
 });
 
 // 3. Search for values in the list
+// get value in input search
+const search = document.querySelector('.search > input');
+let searchValue = '';
+search.addEventListener('keydown', e => {
+    console.log('Search:', search.value);
+    const toDos = [];
+    ul.querySelectorAll('li').forEach(toDo => {
+        toDos.push(toDo.innerText);
+    });
+    // console.log('To Dos:', toDos);
+    const filterToDos = toDos.filter(toDo => toDo.includes(search.value));
+    console.log(filterToDos);
+    ul.querySelectorAll('li').forEach(toDo => {
+        if (!filterToDos.includes(toDo.innerText)) {
+            console.log('CORRECT', toDo);
+            toDo.remove;
+        }
+    });
+    // toDos.forEach(toDo => {
+    //     const filteredList = toDos.filter(toDo => toDo.includes(search.value));
+    //     console.log(filteredList);
+    //     return filteredList;
+    // });
+    // console.log('Matches:', searchToDos);
+});
+// look if the value exists on the list
