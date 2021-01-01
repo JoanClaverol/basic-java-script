@@ -36,11 +36,7 @@ ul.addEventListener('click', e => {
 // 3. Search for values in the list
 // get value in input search
 const search = document.querySelector('.search > input');
-const originalUl = ul;
-let searchValue = '';
-search.addEventListener('keydown', e => {
-    const toDos = [];
-    console.log('Search:', search.value);
+search.addEventListener('keydown', () => {
     ul.querySelectorAll('li').forEach(toDo => {
 
         if (!toDo.innerText.includes(search.value)) {
