@@ -896,3 +896,41 @@ const promos = products
 
 console.log(promos);
 ```
+## Dates & Times in JavaScript
+
+They are objects in js. 
+
+```javascript
+// dates & times
+// we will use the date constructor
+const now = new Date(); 
+
+// useful methods
+console.log('Get full year: ', now.getFullYear()); 
+now.getMonth(); 
+now.getDay(); 
+// ....
+
+// timestamps
+now.getTime(); // number of milisencons since the 1st january 1970
+
+// give me the sate in string
+now.toDateString(); 
+now.toTimeString(); 
+now.toLocaleString(); 
+
+```
+
+### Operations with dates
+
+```javascript
+const before = new Date('February 1 2019 7:30:59'); 
+const now = new Date(); 
+
+const diff = now.getTime() - before.getTime(); 
+
+const mins = Math.round(diff / 100 / 60); 
+const hours = Math.round(mins / 60); 
+const days = Math.round(hours / 24); 
+
+```
